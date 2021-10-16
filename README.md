@@ -1,2 +1,59 @@
-# go-profiling-demo
-Go application for demoing profiling using pprof
+# Go Profiling Demo
+Go application for demoing profiling in Go using standard library tools and packages such as [`pprof`](https://github.com/google/pprof/blob/master/doc/README.md), `trace` and `expvar`.
+
+This is a simple HTTP server application, serving files from a `data` directory. 
+It mainly implements the following endpoint:
+```
+GET /file/<file-path>
+```
+
+## Setup
+1. Clone this repository
+2. Install [wrk](https://github.com/wg/wrk) benchmarking tool  
+   (used to send concurrent requests to the demo server application)
+
+## Demo Flow
+
+Following are the steps of this demo.
+Follow the links to each step to read what is done in the step and to see the code changes.
+
+1. [Step 0](steps/step0/README.md) - Demo preparation and first run
+2. [Step 1](steps/step1) - Add the [`pprof`](https://pkg.go.dev/net/http/pprof) endpoints
+3. 
+
+----
+
+## Notes
+
+### Don't use the default serve mux
+
+Using the default serve mux complicates the ability to put access control and enables other packages to expose endpoints implicitly, similar to how the `pprof` endpoints are added just by adding an anonymous import.
+It is advised to use your own serve mux and add the pprof endpoints explicitly, preferably with an auth middleware. 
+For example:
+```go
+func main() {
+   mux := http.NewServeMux()
+   mux.HandleFunc("/file/", handleGetFile)
+   addPprofHandlers(mux)
+   // ...
+	log.Fatal(http.ListenAndServe(address, authMiddleware(mux))) 
+}
+
+func addPprofHandlers(mux *http.ServeMux) {
+	mux.HandleFunc("/debug/pprof/", pprof.Index)
+	mux.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
+	mux.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
+	mux.HandleFunc("/debug/pprof/profile", pprof.Profile)
+	mux.HandleFunc("/debug/pprof/trace", pprof.Trace)
+}
+
+func authMiddleware(next http.Handler) http.Handler {
+   // ...
+}
+```
+
+----
+
+## Links
+* [Go Diagnostics](https://golang.org/doc/diagnostics)
+* [pprof tool by Google](https://github.com/google/pprof/blob/master/doc/README.md)
