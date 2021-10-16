@@ -19,8 +19,8 @@ Follow the links to each step to read what is done in the step and to see the co
 
 0. [Step 0](steps/step0/README.md) - Demo preparation and first run
 1. [Step 1](steps/step1/README.md) - Add the [`pprof`](https://pkg.go.dev/net/http/pprof) endpoints
-2. [Step 2](steps/step2/README.md) - Collect CPU profile
-3. 
+2. [Step 2](steps/step2/README.md) - Collect CPU profile and visualize it
+3. [Step 3](steps/step3/README.md) - Use execution tracer to visualize Go routines scheduling, GC events, and more
 
 ----
 

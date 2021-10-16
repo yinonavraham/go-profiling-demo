@@ -14,3 +14,7 @@ The demo server is using the default HTTP server mux.
    `http://localhost:8000/debug/pprof`
 
 See the [`net/http/pprof`](https://pkg.go.dev/net/http/pprof) package documentation for further details on the information the `pprof` endpoints provide.
+
+----
+
+Continue to [step 2](../step2/README.md) to see how to use pprof to collect CPU profile and analyse it.

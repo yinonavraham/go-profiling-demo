@@ -34,3 +34,7 @@
    Requests/sec:    739.91
    Transfer/sec:    751.03MB
    ```
+
+   ----
+
+   Continue to [step 1](../step1/README.md) to see how to add the pprof endpoints.

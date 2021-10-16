@@ -11,7 +11,7 @@ Run the benchmark and collect the CPU profile
    ```
    wrk -t100 -d7s -c100 http://localhost:8000/file/test-1mb 
    ```
-2. In terminal 3 - run the `pprof` tool to collect CPU profile from the server for 5 seconds and open the browser with the results.  
+2. In terminal 3 - while benchmark is running, run the `pprof` tool to collect CPU profile from the server for 5 seconds and open the browser with the results
    ```
    go tool pprof -http : http://localhost:8000/debug/pprof/profile?seconds=5
    ```
@@ -37,6 +37,8 @@ Same information in a different type of visualization - the [flame graph](http:/
 
 ![](step2-cpu-flamegraph-before.png)
 
+----
+
 ## Analysis and Improvement
 
 When file reading spends a lot of CPU time on `syscall.Read` it usually doesn't mean the `syscall` is slow, but that it is being called many times.
@@ -54,3 +56,9 @@ Run the benchmark again and collect the CPU profile. The throughput should incre
 The flame graph now shows a different picture:
 
 ![](step2-cpu-flamegraph-after.png)
+
+Now we see `runtime` related functions take ~30% of the CPU time. Looking into it, they seem related to the GC process (e.g. `runtime.gcBgMarkWorker`) and Go routines scheduling (e.g. `runtime.schedule`).
+
+----
+
+Continue to [step 3](../step3/README.md) to see how to investigate it further.
