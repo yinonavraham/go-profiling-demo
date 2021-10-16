@@ -17,16 +17,17 @@ var b [1024 * 10]byte
 for {
 ```
 
-Running the benchmark again - the throughput improved from `~1,100 req/sec` to ``1,200 req/sec`.
+Running the benchmark again - the throughput improved from `~1,100 req/sec` to `1,200 req/sec`.
 
 ### Flame Graph
 
 Looking at the flame graph, GC seems to take less CPU time, but scheduling is still taking CPU time.
+
 ![](step5-flamegraph.png)
 
 ### Execution Trace
 
-Looking at the execution trace, it matches what was visible in the graph view. Less GC event, less noise in the head graph, but there are gaps in the scheduling.
+Looking at the execution trace, it matches what was visible in the graph view. There are less GC event, less noise in the heap graph, but there are still gaps in the scheduling.
 
 ![](step5-trace.png)
 

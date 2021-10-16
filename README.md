@@ -22,6 +22,9 @@ Follow the links to each step to read what is done in the step and to see the co
 2. [Step 2](steps/step2/README.md) - Collect CPU profile and visualize it
 3. [Step 3](steps/step3/README.md) - Use execution tracer to visualize Go routines scheduling, GC events, and more
 4. [Step 4](steps/step4/README.md) - Collect memory profile and visualize it
+5. [Step 5](steps/step5/README.md) - Improvement attempt #1
+6. [Step 6](steps/step6/README.md) - Improvement attempt #2
+6. [Step 7](steps/step7/README.md) - Improvement attempt #3
 
 ----
 
