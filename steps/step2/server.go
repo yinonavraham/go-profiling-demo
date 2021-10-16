@@ -6,6 +6,8 @@ import (
 	"net/http"
 
 	"github.com/yinonavraham/go-profiling-demo/fileutil"
+
+	_ "net/http/pprof"
 )
 
 func main() {
@@ -25,7 +27,7 @@ func handleGetFile(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/octet-stream")
 	res.WriteHeader(http.StatusOK)
 	for {
-		var b [1024]byte
+		var b [1024 * 10]byte // Increased read buffer size
 		n, err := file.Read(b[:])
 		if err != nil {
 			break

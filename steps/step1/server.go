@@ -7,8 +7,7 @@ import (
 
 	"github.com/yinonavraham/go-profiling-demo/fileutil"
 
-	// New import:
-	_ "net/http/pprof"
+	_ "net/http/pprof" // New import
 )
 
 func main() {
@@ -29,9 +28,10 @@ func handleGetFile(res http.ResponseWriter, req *http.Request) {
 	res.WriteHeader(http.StatusOK)
 	for {
 		var b [1024]byte
-		if _, err := file.Read(b[:]); err != nil {
+		n, err := file.Read(b[:])
+		if err != nil {
 			break
 		}
-		res.Write(b[:])
+		res.Write(b[:n])
 	}
 }
