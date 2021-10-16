@@ -21,6 +21,7 @@ Follow the links to each step to read what is done in the step and to see the co
 1. [Step 1](steps/step1/README.md) - Add the [`pprof`](https://pkg.go.dev/net/http/pprof) endpoints
 2. [Step 2](steps/step2/README.md) - Collect CPU profile and visualize it
 3. [Step 3](steps/step3/README.md) - Use execution tracer to visualize Go routines scheduling, GC events, and more
+4. [Step 4](steps/step4/README.md) - Collect memory profile and visualize it
 
 ----
 

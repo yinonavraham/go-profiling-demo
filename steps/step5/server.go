@@ -26,8 +26,8 @@ func handleGetFile(res http.ResponseWriter, req *http.Request) {
 	defer file.Close()
 	res.Header().Set("Content-Type", "application/octet-stream")
 	res.WriteHeader(http.StatusOK)
+	var b [1024 * 10]byte
 	for {
-		var b [1024 * 10]byte
 		n, err := file.Read(b[:])
 		if err != nil {
 			break
