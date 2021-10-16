@@ -1,5 +1,5 @@
 # Go Profiling Demo
-Go application for demoing profiling in Go using standard library tools and packages such as [`pprof`](https://github.com/google/pprof/blob/master/doc/README.md), `trace` and `expvar`.
+Go application for demoing profiling in Go using standard library tools and packages such as [`pprof`](https://github.com/google/pprof/blob/master/doc/README.md), [`trace`](https://golang.org/cmd/trace/) and `expvar`.
 
 This is a simple HTTP server application, serving files from a `data` directory. 
 It mainly implements the following endpoint:
@@ -17,8 +17,9 @@ GET /file/<file-path>
 Following are the steps of this demo.
 Follow the links to each step to read what is done in the step and to see the code changes.
 
-1. [Step 0](steps/step0/README.md) - Demo preparation and first run
-2. [Step 1](steps/step1) - Add the [`pprof`](https://pkg.go.dev/net/http/pprof) endpoints
+0. [Step 0](steps/step0/README.md) - Demo preparation and first run
+1. [Step 1](steps/step1/README.md) - Add the [`pprof`](https://pkg.go.dev/net/http/pprof) endpoints
+2. [Step 2](steps/step2/README.md) - Collect CPU profile
 3. 
 
 ----

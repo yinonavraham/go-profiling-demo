@@ -9,6 +9,8 @@ The demo server is using the default HTTP server mux.
    ```go
    import _ "net/http/pprof"
    ```
-2. Restart the server
+2. Kill the server (`Ctrl-C`) and start it again (`go run .`)
 3. Open the following URL in the browser to see the `pprof` page:  
    `http://localhost:8000/debug/pprof`
+
+See the [`net/http/pprof`](https://pkg.go.dev/net/http/pprof) package documentation for further details on the information the `pprof` endpoints provide.
