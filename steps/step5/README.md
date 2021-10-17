@@ -17,6 +17,10 @@ var b [1024 * 10]byte
 for {
 ```
 
+(see modified source code: [server.go](server.go))
+
+----
+
 Running the benchmark again - the throughput improved from `~1,000 req/sec` to `1,100 req/sec`.
 
 ### Flame Graph

@@ -26,6 +26,8 @@ Instead of allocating a new byte array for each request, let's use a `sync.Pool`
    }()
    ```
 
+(see modified source code: [server.go](server.go))
+
 Running the benchmark again - the throughput is more or less the same as before - seems there is no improvement.
 Also, both the CPU profile flame graph and the execution trace graph are quite similar to the first improvement attempt - no improvement here...
 

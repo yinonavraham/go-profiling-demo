@@ -13,6 +13,9 @@ The demo server is using the default HTTP server mux.
 3. Open the following URL in the browser to see the `pprof` page:  
    `http://localhost:8000/debug/pprof`
 
+
+(see modified source code: [server.go](server.go))
+
 See the [`net/http/pprof`](https://pkg.go.dev/net/http/pprof) package documentation for further details on the information the `pprof` endpoints provide.
 
 ----

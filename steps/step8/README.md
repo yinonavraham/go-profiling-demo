@@ -40,6 +40,10 @@ In this demo we will profile the files opened by the requests.
    ```
 3. Use the new `OpenFileHandleFromRequest` function in the `handleGetFile`
 
+(see custom profile source code in [fileutil/profile.go](../../fileutil/profile.go), and modified source code in [server.go](server.go))
+
+----
+
 The custom profile is now available under the `/debug/pprof` endpoint
 
 ![](step8-pprof-page.png)

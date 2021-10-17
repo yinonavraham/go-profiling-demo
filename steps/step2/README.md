@@ -51,6 +51,10 @@ So now the read byte buffer is defined as:
 var b [1024 * 10]byte
 ```
 
+(see modified source code: [server.go](server.go))
+
+----
+
 Run the benchmark again and collect the CPU profile. The throughput should increase - on my laptop it was `~600 req/sec`, and now it is `~1,000 req/sec`.
 
 The flame graph now shows a different picture:
