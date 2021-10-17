@@ -17,7 +17,6 @@ Instead of allocating a new byte array for each request, let's use a `sync.Pool`
 2. Change from:
    ```go
    var b [1024 * 10]byte
-   for {
    ```
    To:
    ```go
