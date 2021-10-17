@@ -1,5 +1,5 @@
 # Go Profiling Demo
-Go application for demoing profiling in Go using standard library tools and packages such as [`pprof`](https://github.com/google/pprof/blob/master/doc/README.md), [`trace`](https://golang.org/cmd/trace/) and `expvar`.
+Go application for demoing profiling in Go using standard library tools and packages such as [`pprof`](https://github.com/google/pprof/blob/master/doc/README.md), [`trace`](https://golang.org/cmd/trace/) and [`expvar`](https://pkg.go.dev/expvar).
 
 This is a simple HTTP server application, serving files from a `data` directory. 
 It mainly implements the following endpoint:
@@ -26,6 +26,7 @@ Follow the links to each step to read what is done in the step and to see the co
 6. [Step 6](steps/step6/README.md) - Improvement attempt #2
 7. [Step 7](steps/step7/README.md) - Improvement attempt #3
 8. [Step 8](steps/step8/README.md) - Add a custom profile
+9. [Step 9](steps/step9/README.md) - Expose operational values
 
 ----
 
