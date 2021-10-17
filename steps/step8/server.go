@@ -4,8 +4,11 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"sync"
 
 	"github.com/yinonavraham/go-profiling-demo/fileutil"
+
+	_ "net/http/pprof"
 )
 
 func main() {
@@ -16,16 +19,25 @@ func main() {
 	log.Fatal(http.ListenAndServe(address, nil))
 }
 
+var bufs = sync.Pool{
+	New: func() interface{} {
+		return make([]byte, 1024*10)
+	},
+}
+
 func handleGetFile(res http.ResponseWriter, req *http.Request) {
-	file, ok := fileutil.OpenFileFromRequest(res, req)
+	file, ok := fileutil.OpenFileHandleFromRequest(res, req) // Use the FileHandle to collect profiling data
 	if !ok {
 		return
 	}
 	defer file.Close()
 	res.Header().Set("Content-Type", "application/octet-stream")
 	res.WriteHeader(http.StatusOK)
+	b := bufs.Get().([]byte)
+	defer func() {
+		bufs.Put(b)
+	}()
 	for {
-		var b [1024]byte
 		n, err := file.Read(b[:])
 		if err != nil {
 			break

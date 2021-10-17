@@ -24,7 +24,8 @@ Follow the links to each step to read what is done in the step and to see the co
 4. [Step 4](steps/step4/README.md) - Collect memory profile and visualize it
 5. [Step 5](steps/step5/README.md) - Improvement attempt #1
 6. [Step 6](steps/step6/README.md) - Improvement attempt #2
-6. [Step 7](steps/step7/README.md) - Improvement attempt #3
+7. [Step 7](steps/step7/README.md) - Improvement attempt #3
+8. [Step 8](steps/step8/README.md) - Add a custom profile
 
 ----
 

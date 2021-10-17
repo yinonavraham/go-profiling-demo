@@ -26,7 +26,7 @@ var bufs = sync.Pool{
 }
 
 func handleGetFile(res http.ResponseWriter, req *http.Request) {
-	file, ok := fileutil.OpenFromRequest(res, req)
+	file, ok := fileutil.OpenFileFromRequest(res, req)
 	if !ok {
 		return
 	}

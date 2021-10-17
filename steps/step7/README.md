@@ -25,4 +25,4 @@ Zoom in - there are no visible gaps.
 
 ----
 
-Continue to [step 8](../step8/README.md), see how to expose monitoring values.
+Continue to [step 8](../step8/README.md), see how to add a custom profile.

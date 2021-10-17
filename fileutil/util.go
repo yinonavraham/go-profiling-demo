@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func OpenFromRequest(res http.ResponseWriter, req *http.Request) (file *os.File, ok bool) {
+func OpenFileFromRequest(res http.ResponseWriter, req *http.Request) (file *os.File, ok bool) {
 	if req.Method != http.MethodGet {
 		res.Header().Set("Content-Type", "text/plain")
 		res.WriteHeader(http.StatusMethodNotAllowed)
