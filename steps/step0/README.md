@@ -27,12 +27,12 @@
    Running 7s test @ http://localhost:8000/file/test-1mb
      100 threads and 100 connections
      Thread Stats   Avg      Stdev     Max   +/- Stdev
-       Latency   132.31ms   58.71ms 537.87ms   87.28%
-       Req/Sec     8.31      3.32    40.00     74.34%
-     5256 requests in 7.10s, 5.21GB read
-     Socket errors: connect 0, read 81, write 0, timeout 0
-   Requests/sec:    739.91
-   Transfer/sec:    751.03MB
+       Latency   157.73ms   68.70ms 562.68ms   90.70%
+       Req/Sec     7.07      2.88    20.00     40.15%
+     4380 requests in 7.10s, 4.35GB read
+     Socket errors: connect 0, read 102, write 0, timeout 0
+   Requests/sec:    617.21
+   Transfer/sec:    627.80MB
    ```
 
    ----

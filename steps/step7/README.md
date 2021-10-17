@@ -14,7 +14,7 @@ Kill the demo server and this time run it, limited to `2` processors:
 GOMAXPROCS=2 go run .
 ```
 
-Running the benchmark again - the throughput improves. Before it was `~1,200 req/sec`, now it is `~1,500 req/sec`.
+Running the benchmark again - the throughput improves. Before it was `~1,100 req/sec`, now it is `~1,500 req/sec`.
 Looking in the execution trace, it is very clear there are no gaps in the scheduling of the Go routines over the 2 available processors.
 
 ![](step7-trace.png)

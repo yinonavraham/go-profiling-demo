@@ -17,7 +17,7 @@ var b [1024 * 10]byte
 for {
 ```
 
-Running the benchmark again - the throughput improved from `~1,100 req/sec` to `1,200 req/sec`.
+Running the benchmark again - the throughput improved from `~1,000 req/sec` to `1,100 req/sec`.
 
 ### Flame Graph
 
