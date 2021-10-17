@@ -57,6 +57,8 @@ Every time bytes are read - count the bytee
 totalBytes.Add(int64(n))
 ```
 
+(see modified source code in [server.go](server.go))
+
 ----
 
 Run the demo server again, run the benchmark and refresh the `/debug/vars` page - the custom operational information is available.
