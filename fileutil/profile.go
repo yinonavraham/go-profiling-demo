@@ -13,7 +13,7 @@ func init() {
 	const profile_name = "profiling_demo_file_handles"
 	profile = pprof.Lookup(profile_name)
 	if profile == nil {
-		profile = pprof.NewProfile(profile_name)
+		// profile = pprof.NewProfile(profile_name)
 	}
 }
 
