@@ -51,9 +51,6 @@ func handleGetFile(res http.ResponseWriter, req *http.Request) {
 	res.Header().Set("Content-Type", "application/octet-stream")
 	res.WriteHeader(http.StatusOK)
 	b := bufs.Get().([]byte)
-	defer func() {
-		bufs.Put(b)
-	}()
 	for {
 		n, err := file.Read(b[:])
 		if err != nil {
@@ -63,4 +60,5 @@ func handleGetFile(res http.ResponseWriter, req *http.Request) {
 		totalBytes.Add(int64(n))
 		res.Write(b[:n])
 	}
+	bufs.Put(b)
 }
