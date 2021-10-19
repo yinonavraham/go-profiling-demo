@@ -1,0 +1,300 @@
+---- Step 0 ----
+# Setup
+
+go run .
+
+wrk -t100 -d7s -c100 http://localhost:8000/file/test-1mb
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 1 ----
+# Add pprof endpoints
+
+import _ "net/http/pprof"
+
+# See http://localhost:8000/debug/pprof
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 2 ----
+# CPU profile
+
+go tool pprof -http : http://localhost:8000/debug/pprof/profile?seconds=5
+
+# See graph view and flame graph
+
+# Increase read buffer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 3 ----
+# Execution trace
+
+curl http://localhost:8000/debug/pprof/trace?seconds=5 -o trace.out
+
+go tool trace trace.out
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 4 ----
+# Memory profile
+
+go tool pprof -http : http://localhost:8000/debug/pprof/heap?seconds=5
+
+# See graph (inuse & alloc)
+# See source view
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 5 ----
+# Improve 1
+
+# Move byte array allocation outside the for loop
+# See CPU flame graph
+# See execution trace
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 6 ----
+# Improve 2
+
+var bufs = sync.Pool{
+    New: func() interface{} {
+        return make([]byte, 1024*10)
+    },
+}
+
+b := bufs.Get().([]byte)
+
+bufs.Put(b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 7 ----
+# Improve 3
+
+GOMAXPROCS=2 go run .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 8 ----
+# Custom profile
+
+# See fileutil/profile.go
+# Use OpenFileHandleFromRequest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---- Step 9 ----
+# Custom expvar
+
+import _ "expvar"
+
+# global
+var concurrentRequests expvar.Int
+var totalRequests expvar.Int
+var totalBytes expvar.Int
+
+# main
+	metrics := expvar.NewMap("metrics")
+	metrics.Set("concurrentRequests", &concurrentRequests)
+	metrics.Set("totalRequests", &totalRequests)
+	metrics.Set("totalBytes", &totalBytes)
+
+# handleGetFile
+	totalRequests.Add(1)
+	concurrentRequests.Add(1)
+	defer concurrentRequests.Add(-1)
+
+# handleGetFile - in for, after if
+		totalBytes.Add(int64(n))
+		res.Write(b[:n])
