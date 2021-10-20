@@ -297,4 +297,3 @@ var totalBytes expvar.Int
 
 # handleGetFile - in for, after if
 		totalBytes.Add(int64(n))
-		res.Write(b[:n])
