@@ -64,5 +64,6 @@ func authMiddleware(next http.Handler) http.Handler {
 ----
 
 ## Links
-* [Go Diagnostics](https://golang.org/doc/diagnostics)
+* [Go Diagnostics](https://golang.org/doc/diagnostics) (GoLang Documentation)
 * [pprof tool by Google](https://github.com/google/pprof/blob/master/doc/README.md)
+* [Profiling Go Programs](https://go.dev/blog/pprof) (The Go Blog)
