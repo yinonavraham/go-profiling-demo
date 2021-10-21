@@ -1,6 +1,8 @@
 # Go Profiling Demo
 Go application for demoing profiling in Go using standard library tools and packages such as [`pprof`](https://github.com/google/pprof/blob/master/doc/README.md), [`trace`](https://golang.org/cmd/trace/) and [`expvar`](https://pkg.go.dev/expvar).
 
+This demo was presented in a talk in a Go meetup hosted by AppsFlyer and JFrog on Oct. 19th 2021.
+The [recording](https://youtu.be/d82v91UuP2w?t=2118) (in Hebrew) is available on YouTube.
 The slides used together with this demo are also available: [Web Application Profiling 101 - Slides (pdf)](Web_Application_Profiling_101_-_Slides.pdf)
 
 This is a simple HTTP server application, serving files from a `data` directory. 
